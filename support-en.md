@@ -51,6 +51,8 @@ In the gallery, the photo fills its image area, so its edges may be cropped.
 
 Yes. Turn off **Show wear hours** in Settings. Wear days and recorded sessions are preserved, and tracking continues. Turning off **Wear tracking** disables the entire feature and ends running sessions.
 
+The watch view shows a running session and the three most recent completed sessions. Expand older sessions grouped by month when you need them. All saved sessions continue to count towards your statistics.
+
 ## What does a Watch Card include?
 
 A Watch Card includes the photo and the watch details intended for the card. Purchase price, serial number, storage location and private notes are not included as fields. Check your photo and freely entered text for personal information before sharing.

@@ -2,6 +2,7 @@
 """Build the static support site; publication requires real provider details."""
 from pathlib import Path
 from html import escape
+from datetime import date
 import argparse
 import json
 import re
@@ -12,6 +13,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--preview', action='store_true', help='Render a clearly marked local draft.')
 args = parser.parse_args()
 C = json.loads((ROOT / 'site-config.json').read_text())
+updated = date.fromisoformat(C['updated'])
+months_de = ('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember')
+months_en = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
 missing = not C['provider_name'].strip() or len(C['provider_address_lines']) < 2 or any(not x.strip() for x in C['provider_address_lines'])
 if missing and not args.preview:
     raise SystemExit('Nicht veröffentlicht: Anbietername und vollständige öffentliche Anschrift in site-config.json fehlen. Für eine lokale Vorschau: python3 build.py --preview')
@@ -45,8 +49,8 @@ def provider(lang):
     return '<address><strong>' + escape(C['provider_name']) + '</strong><br>' + '<br>'.join(escape(x) for x in C['provider_address_lines']) + '</address>'
 
 WORDS = {
- 'de': {'support':'Support','privacy':'Datenschutz','legal':'Impressum','backup':'Backup-Verschlüsselung','skip':'Zum Inhalt','nav':'Hauptnavigation','lang':'Sprache','toc':'Auf dieser Seite','footer':'Deine Uhren. Gut organisiert.','back':'Zurück zum Support','date':'Stand: 24. September 2026','draft':'Vorschau · Vor der Veröffentlichung fehlen noch die öffentlichen Anbieterangaben.'},
- 'en': {'support':'Support','privacy':'Privacy','legal':'Legal notice','backup':'Backup encryption','skip':'Skip to content','nav':'Main navigation','lang':'Language','toc':'On this page','footer':'Your watches, well organised.','back':'Back to support','date':'Updated: 24 September 2026','draft':'Preview · Public provider details must be added before publication.'}
+ 'de': {'support':'Support','privacy':'Datenschutz','legal':'Impressum','backup':'Backup-Verschlüsselung','skip':'Zum Inhalt','nav':'Hauptnavigation','lang':'Sprache','toc':'Auf dieser Seite','footer':'Deine Uhren. Gut organisiert.','back':'Zurück zum Support','date':f'Stand: {updated.day}. {months_de[updated.month - 1]} {updated.year}','draft':'Vorschau · Diese Fassung ist noch nicht veröffentlicht.'},
+ 'en': {'support':'Support','privacy':'Privacy','legal':'Legal notice','backup':'Backup encryption','skip':'Skip to content','nav':'Main navigation','lang':'Language','toc':'On this page','footer':'Your watches, well organised.','back':'Back to support','date':f'Updated: {updated.day} {months_en[updated.month - 1]} {updated.year}','draft':'Preview · This version has not been published.'}
 }
 FILES = {'support':'index.html','privacy':'privacy.html','legal':'legal.html','backup':'backup.html'}
 

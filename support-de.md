@@ -51,6 +51,8 @@ In der Galerie füllt das Foto die Bildfläche. Dabei können seine Ränder abge
 
 Ja. Schalte in den Einstellungen **Tragestunden anzeigen** aus. Tragetage und erfasste Zeiträume bleiben erhalten, und das Tracking läuft weiter. **Tragezeit-Tracking** schaltet die gesamte Funktion aus und beendet laufende Tragezeiten.
 
+In der Uhransicht bleiben eine laufende Tragezeit und die drei neuesten abgeschlossenen Einträge sichtbar. Ältere Einträge kannst du nach Monaten gruppiert aufklappen. Alle gespeicherten Tragezeiten zählen weiterhin zur Statistik.
+
 ## Welche Angaben enthält eine Watch Card?
 
 Die Watch Card enthält das Foto und die dafür vorgesehenen Uhrendaten. Kaufpreis, Seriennummer, Aufbewahrungsort und private Notizen werden nicht als Felder übernommen. Prüfe dein Foto und frei eingegebene Texte vor dem Teilen auf persönliche Inhalte.
